@@ -5,12 +5,12 @@
 Welcome to the official repository for Knockout Wars game contracts, developed by Gami Studio. This repository houses essential components for the game's ecosystem:
 
 1. **NFT ERC1155 Contract**: For visual elements in the game and unique in-game perks.
-2. **Account Abstraction**: Facilitates a seamless onboarding experience for new players with automatic wallet creation.
+2. **Safe**: Using Gnosis safes wallet contracts
 3. **ERC20 Token**: Features our game's utility token with distinct functionalities to support the game's economy and player interactions. (CODE YET TO BE FINALIZED AND ADDED)
 
 ## ERC20 Token Features
 
-Our ERC20 token is designed with six distinct features to support the game's economy and enhance player experience:
+[WIP] Our ERC20 token is still a work in progress and is designed with six distinct features to support the game's economy and enhance player experience:
 
 - **Transaction Fee (1.5%)**: Applied on all transactions to fund various aspects of the game's ecosystem.
   - **Reflection (0.6%)**: Distributed among token holders to reward them for their participation.
@@ -23,21 +23,21 @@ Our ERC20 token is designed with six distinct features to support the game's eco
 
 ### Player Onboarding and Wallet Management
 
-- Upon signing up, players receive an abstraction wallet, which will be used for all in-game activities unless they opt for their own custodial wallet.
-- Abstraction wallets allow free transactions for players, with gas fees covered by the treasury.
+- Upon signing up, players receive a wallet, which will be used for all in-game activities unless they opt for their own custodial wallet.
+- Smart contract wallets allow free transactions for players, with gas fees covered by the treasury.
 - Players using their custodial wallets must ensure they have the native chain token for gas.
-- Players can switch between wallets at any time and transfer assets freely between their abstraction and custodial wallets.
+- Players can switch between wallets at any time and transfer assets freely between their Smart contract and custodial wallets.
 
 ### Wallet Usage and Gas Fees
 
-- The abstraction wallet system ensures that new and casual players can participate in the game without worrying about transaction fees.
+- The Smart contract wallet system ensures that new and casual players can participate in the game without worrying about transaction fees.
 - The fee treasury mechanism, funded by the ERC20 token transaction fees, underpins this feature, ensuring a sustainable model for covering in-game transaction costs.
 
 ## Features
 
 - **Visual NFTs**: Enhance your game with unique, visually appealing assets that come with exclusive in-game perks.
 - **ERC1155 Standard**: Utilizing the flexible and efficient ERC1155 standard for managing multi-token types.
-- **Account Abstraction**: Streamline the player onboarding process with automated wallet addresses for new sign-ups and personal wallet integration.
+- **Smart Contract Account**: Streamline the player onboarding process with automated wallet addresses for new sign-ups and personal wallet integration.
 
 ## Final Notes: Pending Items and ERC20 Token Update
 
@@ -54,6 +54,3 @@ As we advance towards finalizing the infrastructure of Knockout Wars, we aim to 
 
 Additionally, we are thrilled to announce that our ERC20 token development is nearing completion. This token will introduce several innovative features to the Knockout Wars ecosystem
 
-### Pending Items for Account Abstraction
-
-**Finalize Paymaster Capability**: Completing the integration of the paymaster feature to cover transaction fees on behalf of players.
