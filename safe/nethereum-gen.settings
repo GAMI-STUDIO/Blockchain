@@ -1,0 +1,7 @@
+{
+    "projectName": "Safe",
+    "namespace": "Safe.Contracts",
+    "lang": 0,
+    "autoCodeGen": true,
+    "projectPath": "../"
+}   

@@ -5,7 +5,7 @@ import '@openzeppelin/hardhat-upgrades';
 import dotenv from 'dotenv'; 
 dotenv.config();
 
-const privateKey = process.env.PRIVATE_KEY_OWNER
+const privateKey = process.env.PRIVATE_KEY_OWNER || ''
 
 const config: HardhatUserConfig = {
     solidity: {
@@ -43,7 +43,7 @@ const config: HardhatUserConfig = {
   networks: {
       neondevnet: {
           url: "https://devnet.neonevm.org",
-          accounts: [""],
+          accounts: [privateKey],
           chainId: 245022926,
           allowUnlimitedContractSize: false,
           gas: "auto",
@@ -51,7 +51,7 @@ const config: HardhatUserConfig = {
       },
       neonmainnet: {
           url: "https://neon-proxy-mainnet.solana.p2p.org",
-          accounts: [""],
+          accounts: [privateKey],
           chainId: 245022934,
           allowUnlimitedContractSize: false,
           gas: "auto",

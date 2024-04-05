@@ -157,22 +157,22 @@ contract Safe is
 
         // We require some gas to emit the events (at least 2500) after the execution and some to perform code until the execution (500)
         // We also include the 1/64 in the check that is not send along with a call to counteract potential shortings because of EIP-150
-        if (gasleft() < ((safeTxGas * 64) / 63).max(safeTxGas + 2500) + 500) revertWithError("GS010");
+        // if (gasleft() < ((safeTxGas * 64) / 63).max(safeTxGas + 2500) + 500) revertWithError("GS010");
         // Use scope here to limit variable lifetime and prevent `stack too deep` errors
         {
-            uint256 gasUsed = gasleft();
+            // uint256 gasUsed = gasleft();
             // If the gasPrice is 0 we assume that nearly all available gas can be used (it is always more than safeTxGas)
             // We only subtract 2500 (compared to the 3000 before) to ensure that the amount passed is still higher than safeTxGas
-            success = execute(to, value, data, operation, gasPrice == 0 ? (gasleft() - 2500) : safeTxGas);
-            gasUsed = gasUsed.sub(gasleft());
+            success = execute(to, value, data, operation, safeTxGas);
+            // gasUsed = gasUsed.sub(gasleft());
             // If no safeTxGas and no gasPrice was set (e.g. both are 0), then the internal tx is required to be successful
             // This makes it possible to use `estimateGas` without issues, as it searches for the minimum gas where the tx doesn't revert
             if (!success && safeTxGas == 0 && gasPrice == 0) revertWithError("GS013");
             // We transfer the calculated tx costs to the tx.origin to avoid sending it to intermediate contracts that have made calls
             uint256 payment = 0;
-            if (gasPrice > 0) {
-                payment = handlePayment(gasUsed, baseGas, gasPrice, gasToken, refundReceiver);
-            }
+            // if (gasPrice > 0) {
+            //     payment = handlePayment(gasUsed, baseGas, gasPrice, gasToken, refundReceiver);
+            // }
             if (success) emit ExecutionSuccess(txHash, payment);
             else emit ExecutionFailure(txHash, payment);
         }

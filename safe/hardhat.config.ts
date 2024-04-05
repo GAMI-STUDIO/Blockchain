@@ -115,6 +115,10 @@ const userConfig: HardhatUserConfig = {
             ...sharedNetworkConfig,
             url: `https://api.avax.network/ext/bc/C/rpc`,
         },
+        neondevnet: {
+            ...sharedNetworkConfig,
+            url: `https://devnet.neonevm.org`,
+        },
     },
     deterministicDeployment,
     namedAccounts: {
@@ -124,7 +128,27 @@ const userConfig: HardhatUserConfig = {
         timeout: 2000000,
     },
     etherscan: {
-        apiKey: ETHERSCAN_API_KEY,
+        apiKey: {
+            neonevm: "test"
+        },
+        customChains: [
+            {
+                network: "neonevm",
+                chainId: 245022926,
+                urls: {
+                    apiURL: "https://devnet-api.neonscan.org/hardhat/verify",
+                    browserURL: "https://devnet.neonscan.org"
+                }
+            },
+            {
+                network: "neonevm",
+                chainId: 245022934,
+                urls: {
+                    apiURL: "https://api.neonscan.org/hardhat/verify",
+                    browserURL: "https://neonscan.org"
+                }
+            }
+        ]
     },
 };
 if (NODE_URL) {
