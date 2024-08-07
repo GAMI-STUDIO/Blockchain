@@ -47,6 +47,15 @@ contract GenesisNFT is
     }
 
     /**
+     * @dev Override the `uri` function to format the base URI with the token ID.
+     * @param id Token ID.
+     * @return The token URI.
+     */
+    function uri(uint256 id) public pure override returns (string memory) {
+        return string(abi.encodePacked(super.uri(id), Strings.toString(id), ".json"));
+    }
+
+    /**
      * @dev Function to pause all token transfers.
      */
     function pause() public onlyOwner {

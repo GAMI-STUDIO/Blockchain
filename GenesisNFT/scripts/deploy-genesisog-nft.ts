@@ -15,7 +15,7 @@ async function main() {
 
   // 2. Instantiating a new GenesisNFT smart contract
   const initialOwner = "0x64c4ee11140C2880e0c85053104b5F2229342880"; // Replace with actual owner address
-  const initialBaseURI = "https://red-glamorous-weasel-983.mypinata.cloud/ipfs/QmTCC4dw2XfJazZvaZDfLBpoAgj2wShoVz46y35iX5tRuU/{id}.json";
+  const initialBaseURI = "https://red-glamorous-weasel-983.mypinata.cloud/ipfs/QmTCC4dw2XfJazZvaZDfLBpoAgj2wShoVz46y35iX5tRuU/";
   const initialName = "GenesisOG"; 
   
   console.log(`Initial owner: ${initialOwner}`);
