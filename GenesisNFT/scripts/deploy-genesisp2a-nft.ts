@@ -32,10 +32,10 @@ async function main() {
     // 4. Use the contract instance to get the contract address
     console.log('GenesisNFT deployed to:', genesisNFT.target);
 
-    // 5. Mint 18 NFTs, each with 1,000 copies
+    // 5. Mint 6 NFTs, each with 1,000 copies
     console.log('Minting 18 NFTs with 1,000 copies each...');
-    const tokenIds = Array.from({ length: 18 }, (_, i) => i); // [0, 1, ..., 17]
-    const amounts = Array(18).fill(1000); // [1000, 1000, ..., 1000]
+    const tokenIds = Array.from({ length: 6 }, (_, i) => i); // [0, 1, ..., 17]
+    const amounts = Array(6).fill(1000); // [1000, 1000, ..., 1000]
 
     const mintBatchTx = await genesisNFT.mintBatch(initialOwner, tokenIds, amounts, "0x");
     await mintBatchTx.wait();

@@ -54,3 +54,9 @@ As we advance towards finalizing the infrastructure of Knockout Wars, we aim to 
 
 Additionally, we are thrilled to announce that our ERC20 token development is nearing completion. This token will introduce several innovative features to the Knockout Wars ecosystem
 
+
+npm cache clean --force
+npm install --legacy-peer-deps
+npm run compile
+
+

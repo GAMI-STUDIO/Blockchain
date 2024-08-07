@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "npx hardhat compile",
-    "deploy": "npx hardhat run scripts/deploy-nft.ts --network atlantis"
+    "deployog": "npx hardhat run scripts/deploy-genesisog-nft.ts --network atlantis",
+    "deployp2a": "npx hardhat run scripts/deploy-genesisp2a-nft.ts --network atlantis"
   },
   "author": "",
   "license": "ISC",
