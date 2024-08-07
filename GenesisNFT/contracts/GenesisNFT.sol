@@ -16,14 +16,26 @@ contract GenesisNFT is
 {
     // Array to store all minted token IDs
     uint256[] private _allTokenIds;
+
+    // Token name
+    string public name = "Genesis";
+
+    event UpdateNameEvent(string oldName, string newName);
     
     /**
      * @dev Constructor that sets the initial owner and initial base URI.
      * @param initialOwner Address of the initial owner.
      * @param initialBaseURI Base URI for the token metadata.
      */
-    constructor(address initialOwner, string memory initialBaseURI) ERC1155(initialBaseURI) Ownable(initialOwner) {
-       
+    constructor(address initialOwner, string memory name_, string memory initialBaseURI) ERC1155(initialBaseURI) Ownable(initialOwner) {
+       name = name_;
+    }
+
+
+    function updateName(string memory newName_) external onlyOwner{
+        string memory oldName = name;
+        name = newName_;
+        emit UpdateNameEvent(oldName, name);
     }
 
     /**
