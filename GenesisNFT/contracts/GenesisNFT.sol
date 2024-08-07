@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Pausable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Burnable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 contract GenesisNFT is
     ERC1155,
@@ -51,7 +52,7 @@ contract GenesisNFT is
      * @param id Token ID.
      * @return The token URI.
      */
-    function uri(uint256 id) public pure override returns (string memory) {
+    function uri(uint256 id) public view override returns (string memory) {
         return string(abi.encodePacked(super.uri(id), Strings.toString(id), ".json"));
     }
 
