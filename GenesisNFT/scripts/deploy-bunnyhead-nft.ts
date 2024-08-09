@@ -10,40 +10,37 @@ async function main() {
   console.log(`Deployer balance: ${ethers.formatEther(balance)} ETH`);
 
   // 1. Get the contract to deploy
-  const GenesisNFT = await ethers.getContractFactory('GenesisNFT');
+  const BunnyHeadNFT = await ethers.getContractFactory('GenesisNFT');
   console.log('Deploying GenesisNFT...');
 
   // 2. Instantiating a new GenesisNFT smart contract 
   // const initialOwner = "0x64c4ee11140C2880e0c85053104b5F2229342880"; // dev address
   const initialOwner = "0x4c43A30AD27421FF27Ed12d4305211Ae1F811C94"; // live address
-  const initialBaseURI = "https://red-glamorous-weasel-983.mypinata.cloud/ipfs/QmXTBw2YE12ZmYDZDFmBnMLTQ4N48BeFf89hi3ZtYrcQof/";
-  const initialName = "GenesisOG"; 
+  const initialBaseURI = "https://red-glamorous-weasel-983.mypinata.cloud/ipfs/QmcYf1UbpdhBvyQscDsQHZW8kTt86T7jzuJL5GDUG1BfMy/";
+  const initialName = "BunnyHeadNFT"; 
   
   console.log(`Initial owner: ${initialOwner}`);
   console.log(`Initial base URI: ${initialBaseURI}`);
 
   try {
-    const genesisNFT = await GenesisNFT.deploy(initialOwner, initialName, initialBaseURI/*, {
-      gasPrice: gasPrice,
-      gasLimit: gasLimit
-    }*/);
+    const bunnyHeadNFT = await BunnyHeadNFT.deploy(initialOwner, initialName, initialBaseURI);
 
     // 3. Waiting for the deployment to resolve
-    await genesisNFT.waitForDeployment();
+    await bunnyHeadNFT.waitForDeployment();
 
     // 4. Use the contract instance to get the contract address
-    console.log('GenesisNFT deployed to:', genesisNFT.target);
+    console.log('Bunny Head NFT deployed to:', bunnyHeadNFT.target);
 
-    // 5. Mint 18 NFTs, each with 1,000 copies
-    console.log('Minting 18 NFTs with 1,000 copies each...');
-    const tokenIds = Array.from({ length: 18 }, (_, i) => i + 1); // [1, 2, ..., 18]
-    const amounts = Array(18).fill(1000); // [1000, 1000, ..., 1000]
+    // 5. Mint 18 NFTs, each with 20,000 copies
+    console.log('Minting 3 NFTs with 20,000 copies each...');
+    const tokenIds = Array.from({ length: 3 }, (_, i) => i + 1); // [1, 2, ..., 3]
+    const amounts = Array(3).fill(20000); // [20000, 20000, ..., 20000]
 
-    const mintBatchTx = await genesisNFT.mintBatch(initialOwner, tokenIds, amounts, "0x");
+    const mintBatchTx = await bunnyHeadNFT.mintBatch(initialOwner, tokenIds, amounts, "0x");
     await mintBatchTx.wait();
 
 
-    console.log('Successfully minted 18 NFTs with 1,000 copies each');
+    console.log('Successfully minted 3 NFTs with 20,000 copies each');
   } catch (error) {
     console.error("Deployment failed:", error);
   }
