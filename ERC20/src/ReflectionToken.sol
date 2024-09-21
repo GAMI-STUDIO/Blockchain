@@ -1,13 +1,13 @@
 //SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.27;
 
 import "./interface/IReflectionToken.sol";
 import "./interface/IUniswapV2Factory.sol";
 import "./interface/IUniswapV2Pair.sol";
 import "./interface/IUniswapV2Router02.sol";
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Address.sol";
+import "openzeppelin-contracts/contracts/access/Ownable.sol";
+import "openzeppelin-contracts/contracts/utils/Address.sol";
 
 contract ReflectionToken is IReflectionToken, Ownable {
     struct FeeTier {
@@ -131,7 +131,8 @@ contract ReflectionToken is IReflectionToken, Ownable {
     event SwapAndEvolveEnabledUpdated(bool enabled);
     event SwapAndEvolve(uint256 ethSwapped, uint256 tokenReceived, uint256 ethIntoLiquidity);
 
-    constructor(address _router, string memory __name, string memory __symbol) {
+    constructor(address _router, string memory __name, string memory __symbol) Ownable(msg.sender) {
+        require(_router != address(0), "Invalid router address");
         _name = __name;
         _symbol = __symbol;
         _decimals = 9;

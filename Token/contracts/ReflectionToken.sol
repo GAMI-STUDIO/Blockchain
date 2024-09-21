@@ -131,7 +131,7 @@ contract ReflectionToken is IReflectionToken, Ownable {
     event SwapAndEvolveEnabledUpdated(bool enabled);
     event SwapAndEvolve(uint256 ethSwapped, uint256 tokenReceived, uint256 ethIntoLiquidity);
 
-    constructor(address _router, string memory __name, string memory __symbol) {
+    constructor(address _router, string memory __name, string memory __symbol) Ownable(msg.sender) {
         _name = __name;
         _symbol = __symbol;
         _decimals = 9;
